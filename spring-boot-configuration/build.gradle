@@ -1,0 +1,7 @@
+dependencies {
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+}
+
+jar {
+    enabled = true // 컴파일 시 의존관계 설정이 제대로 동작 하지 않을 때가 있다....
+}

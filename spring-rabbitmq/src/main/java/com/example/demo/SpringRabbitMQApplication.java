@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringRabbitMQApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringRabbitMQApplication.class, args);
+        SpringApplication.run(SpringRabbitMQApplication.class, args).close();
     }
 
 }

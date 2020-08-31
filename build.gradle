@@ -55,7 +55,7 @@ subprojects {
     }
 }
 
-project(':spring-rabbitmq')
 project(':spring-boot-initialize')
 project(':spring-boot-configuration')
+project(':spring-rabbitmq')
 

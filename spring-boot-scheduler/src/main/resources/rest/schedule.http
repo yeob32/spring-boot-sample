@@ -1,0 +1,16 @@
+POST http://localhost:8080/schedule/register?id=cron2&name=크론 등록 테스트&scheduleType=cron2&expression=*/1 * * * * *&actionTarget=pointSchedule.expiredPoint
+Content-Type: application/json
+
+{
+  "id": "cron2",
+  "name": "크론 등록 테스트",
+  "scheduleType": "cron2",
+  "expression": "*/1 * * * * *",
+  "actionTarget": "pointSchedule.expiredPoint"
+}
+
+###
+GET http://localhost:8080/schedule/stop?id=cron2
+Accept: application/json
+
+###

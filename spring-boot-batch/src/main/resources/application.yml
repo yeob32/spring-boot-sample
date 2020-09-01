@@ -1,0 +1,45 @@
+
+spring:
+  profiles:
+    active:
+
+spring.batch.job.names: ${job.name:NONE} # 값이 넘어오면 해당 값과 일치하는 Job만 실행
+# Program argument: --job.name=stepNextJob version=2
+# 실제 운영 환경 -> java -jar batch-application.jar --job.name=simpleJob
+logging.level.org.springframework.batch: DEBUG
+chunkSize: 1000
+
+---
+spring:
+  profiles:
+    active: h2
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:~/test
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+---
+spring:
+  profiles:
+    active: mysql
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/spring_batch
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: sykim
+      password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+  main:
+    allow-bean-definition-overriding: true
+  level:
+    org.springframework.batch: INFO

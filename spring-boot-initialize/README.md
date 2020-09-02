@@ -9,7 +9,8 @@
 ## References
 - https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation
 
-## 서브 모듈 참조 시 컴파일 에러
+## 이슈
+### 서브 모듈 참조 시 컴파일 에러
 ```
 module: spring-boot-initialize
 
@@ -69,4 +70,19 @@ FAILURE: Build failed with an exception.
 Execution failed for task ':spring-boot-initialize:compileJava'.
 > Compilation failed; see the compiler error output for details.
 
+```
+
+### @SpringBootConfiguration 다중 로드
+- 서브 모듈(spring-boot-configuration)의 @SpringBootConfiguration 같이 동작하나보다..
+```
+@SpringBootTest(classes = SpringInitializeApplication.class)
+class SpringInitializeApplicationTests {
+	@Test
+	void contextLoads() {
+	}
+}
+```
+```
+Found multiple @SpringBootConfiguration annotated classes [Generic bean: class [com.example.demo.SpringInitializeApplication]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/sykim/IdeaProjects/spring-boot-tutorial/spring-boot-initialize/build/classes/java/main/com/example/demo/SpringInitializeApplication.class], Generic bean: class [com.example.demo.SpringConfigurationApplication]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [jar:file:/Users/sykim/IdeaProjects/spring-boot-tutorial/spring-boot-configuration/build/libs/spring-boot-configuration-0.0.1-SNAPSHOT.jar!/com/example/demo/SpringConfigurationApplication.class]]
+java.lang.IllegalStateException: Found multiple @SpringBootConfiguration annotated classes [Generic bean: class [com.example.demo.SpringInitializeApplication]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/sykim/IdeaProjects/spring-boot-tutorial/spring-boot-initialize/build/classes/java/main/com/example/demo/SpringInitializeApplication.class], Generic bean: class [com.example.demo.SpringConfigurationApplication]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in URL [jar:file:/Users/sykim/IdeaProjects/spring-boot-tutorial/spring-boot-configuration/build/libs/spring-boot-configuration-0.0.1-SNAPSHOT.jar!/com/example/demo/SpringConfigurationApplication.class]]
 ```

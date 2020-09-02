@@ -3,8 +3,8 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class DemoApplicationTests {
+@SpringBootTest(classes = SpringInitializeApplication.class)
+class SpringInitializeApplicationTests {
 
 	@Test
 	void contextLoads() {

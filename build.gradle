@@ -15,7 +15,6 @@ subprojects {
 
     dependencies {
         compileOnly 'org.projectlombok:lombok'
-        runtimeOnly 'com.h2database:h2'
         annotationProcessor 'org.projectlombok:lombok'
 
 //        implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -58,4 +57,8 @@ subprojects {
 project(':spring-boot-initialize')
 project(':spring-boot-configuration')
 project(':spring-rabbitmq')
+project(':spring-mockito')
+project(':spring-boot-batch')
+project(':spring-boot-scheduler')
+
 

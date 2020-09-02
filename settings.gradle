@@ -1,5 +1,8 @@
-rootProject.name = 'spring-boot-tutorial'
+rootProject.name = 'spring-boot-sample'
 
 include 'spring-boot-initialize',
         'spring-boot-configuration',
-        'spring-rabbitmq'
+        'spring-rabbitmq',
+        'spring-mockito',
+        'spring-boot-batch',
+        'spring-boot-scheduler'

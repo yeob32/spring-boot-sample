@@ -60,5 +60,6 @@ project(':spring-rabbitmq')
 project(':spring-mockito')
 project(':spring-boot-batch')
 project(':spring-boot-scheduler')
+project(':spring-boot-security')
 
 

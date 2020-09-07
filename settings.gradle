@@ -5,4 +5,5 @@ include 'spring-boot-initialize',
         'spring-rabbitmq',
         'spring-mockito',
         'spring-boot-batch',
-        'spring-boot-scheduler'
+        'spring-boot-scheduler',
+        'spring-boot-security'

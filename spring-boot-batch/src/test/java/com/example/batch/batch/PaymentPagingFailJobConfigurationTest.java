@@ -3,6 +3,7 @@ package com.example.batch.batch;
 import com.example.batch.domain.pay.Payment;
 import com.example.batch.domain.pay.PaymentRepository;
 import com.example.batch.job.reader.PaymentPagingFailJobConfiguration;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
@@ -18,6 +19,7 @@ import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 @SpringBatchTest
 @SpringBootTest(classes = PaymentPagingFailJobConfiguration.class)
 //@ContextConfiguration(classes = PaymentPagingFailJobConfiguration.class)

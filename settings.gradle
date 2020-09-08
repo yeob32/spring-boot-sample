@@ -7,4 +7,5 @@ include 'spring-boot-initialize',
         'spring-boot-batch',
         'spring-boot-scheduler',
         'spring-boot-security',
-        'spring-boot-swagger'
+        'spring-boot-swagger',
+        'spring-boot-rest-docs'

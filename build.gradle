@@ -4,6 +4,14 @@ plugins {
     id 'java'
 }
 
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
@@ -17,7 +25,6 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
 
-//        implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter'
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -62,5 +69,6 @@ project(':spring-boot-batch')
 project(':spring-boot-scheduler')
 project(':spring-boot-security')
 project(':spring-boot-swagger')
+project(':spring-boot-rest-docs')
 
 

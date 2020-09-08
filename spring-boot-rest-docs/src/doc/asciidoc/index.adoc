@@ -1,0 +1,33 @@
+= CRUD API
+
+== Index
+
+==== url
+include::{snippets}/index/curl-request.adoc[]
+
+==== Links
+
+include::{snippets}/index/links.adoc[]
+
+==== request
+include::{snippets}/index/http-request.adoc[]
+
+==== response
+include::{snippets}/index/http-response.adoc[]
+
+==== fields
+include::{snippets}/index/response-fields.adoc[]
+
+== Create
+
+==== url
+include::{snippets}/index/curl-request.adoc[]
+
+==== request
+include::{snippets}/create-crud-example/http-request.adoc[]
+
+==== fields
+include::{snippets}/create-crud-example/request-fields.adoc[]
+
+==== response
+include::{snippets}/create-crud-example/http-response.adoc[]

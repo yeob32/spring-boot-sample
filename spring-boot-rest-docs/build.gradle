@@ -1,0 +1,52 @@
+plugins {
+	id 'org.asciidoctor.convert' version '1.5.8'
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+}
+
+ext {
+	snippetsDir = file('build/generated-snippets')
+}
+
+test {
+	outputs.dir snippetsDir
+	useJUnitPlatform()
+}
+
+// api 문서 생성 -> build/asciidoc/html5/index.html
+asciidoctor {
+	sourceDir 'src/doc/asciidoc'
+	attributes \
+		'snippets': file('build/generated-snippets')
+}
+
+// 왜 삐꾸지 이거...
+bootJar {
+	dependsOn asciidoctor
+	from ("${asciidoctor.outputDir}/html5") {
+		into 'src/main/resources/static/docs'
+	}
+}
+
+// index.html 파일 복사 -> src/main/resources/static/docs/index.html
+task copyDocument(type: Copy) {
+	dependsOn asciidoctor
+
+	from file("${asciidoctor.outputDir}/html5/")
+	into file("src/main/resources/static/docs")
+}
+
+build {
+	dependsOn copyDocument
+}
+
+

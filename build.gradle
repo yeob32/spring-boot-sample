@@ -70,5 +70,6 @@ project(':spring-boot-scheduler')
 project(':spring-boot-security')
 project(':spring-boot-swagger')
 project(':spring-boot-rest-docs')
+project(':spring-boot-async')
 
 

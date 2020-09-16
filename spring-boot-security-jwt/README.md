@@ -73,6 +73,45 @@ SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 - AbstractAuthenticationProcessingFilter 
     - doFilter -> successfulAuthentication -> successHandler.onAuthenticationSuccess(request, response, authResult);
     - unsuccessfulAuthentication 
+    
+
+## 비동기 환경
+### WebAsyncManagerIntegrationFilter
+- 스프링 MVC 의 Async 기능을 사용할 때도 SecurityContext 를 공유하도록 도와주는 필터
+- PreProcess: SecurityContext 설정
+- Callable: 비록 다른 쓰레드지만 그 안에서는 동일한 SecurityContext 를 참조할 수 있다. 
+- PostProcess: SecurityContext 정리(clean up)
+- MVC 요청이 들어오는 쓰레드 작업을 완료하고 나서도 SecurityContextHolder 에서는 사용자 정보를 동일하게 얻을 수 있다.
+    - WebAsyncManagerIntegrationFilter
+```
+@Controller
+public class SampleController {
+
+    @GetMapping("/async-handler")
+    @ResponseBody
+    public Callable<String> asyncHandler() {
+        // http-nio-8080-exec 쓰레드
+        SecurityLogger.log("MVC");
+
+        return () -> {
+            // task-1 쓰레드
+            SecurityLogger.log("Callable");
+            return "Async Handler";
+        };
+    }
+}
+```
+
+### SecurityContextCallableProcessingInterceptor
+- WebAsyncManagerIntegrationFilter 는 SecurityContextCallableProcessingInterceptor 를 사용해서 SecurityContextHolder 에 SecurityContext 저장
+
+### @Async 서비스에서 SecurityContextHolder 공유
+- SecurityContextHolder 기본 전략은 ThreadLocal
+- @Async 서비스에서 SecurityContextHolder 가 공유 되지 않는 문제 발생
+- SecurityContextHolder 전략을 다음 코드와 같이 바꾸면 쓰레드 계층 사이에서도 SecurityContextHolder 정보가 공유된다
+```
+SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+```
 
 
 ## References

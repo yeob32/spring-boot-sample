@@ -12,12 +12,14 @@ public class JwtAuthenticationToken extends AbstractAuthenticationToken {
     private RawAccessJwtToken rawAccessToken;
     private UserContext userContext;
 
+    // 인증 되지 않은 토큰
     public JwtAuthenticationToken(RawAccessJwtToken unsafeToken) {
         super(null);
         this.rawAccessToken = unsafeToken;
         this.setAuthenticated(false);
     }
 
+    // 인증 된 토큰
     public JwtAuthenticationToken(UserContext userContext, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.eraseCredentials();

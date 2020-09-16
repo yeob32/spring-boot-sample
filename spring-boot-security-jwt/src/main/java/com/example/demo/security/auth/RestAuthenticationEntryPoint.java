@@ -11,8 +11,9 @@ import java.io.IOException;
 
 @Component
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException ex) throws IOException {
-        response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
+        response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized entry point !");
     }
 }

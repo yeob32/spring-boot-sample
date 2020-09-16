@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SkipPathRequestMatcher implements RequestMatcher {
-    private OrRequestMatcher matchers;
-    private RequestMatcher processingMatcher;
+
+    private final OrRequestMatcher matchers;
+    private final RequestMatcher processingMatcher;
 
     public SkipPathRequestMatcher(List<String> pathsToSkip, String processingPath) {
         Assert.notNull(pathsToSkip, "[Assertion failed] - this argument is required; it must not be null");

@@ -73,5 +73,7 @@ SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 - AbstractAuthenticationProcessingFilter 
     - doFilter -> successfulAuthentication -> successHandler.onAuthenticationSuccess(request, response, authResult);
     - unsuccessfulAuthentication 
-    
-    
+
+
+## References
+- https://github.com/svlada/springboot-security-jwt

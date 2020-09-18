@@ -10,4 +10,5 @@ include 'spring-boot-initialize',
         'spring-boot-security-jwt',
         'spring-boot-swagger',
         'spring-boot-rest-docs',
-        'spring-boot-async'
+        'spring-boot-async',
+        'spring-boot-redis'

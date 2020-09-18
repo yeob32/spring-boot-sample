@@ -72,4 +72,4 @@ project(':spring-boot-security-jwt')
 project(':spring-boot-swagger')
 project(':spring-boot-rest-docs')
 project(':spring-boot-async')
-
+project(':spring-boot-redis')

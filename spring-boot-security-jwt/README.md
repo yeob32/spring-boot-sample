@@ -113,6 +113,13 @@ public class SampleController {
 SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
 ```
 
+### 설계
+- 보안 정책
+    - 로그인 시에만 접근
+        - /api/member/*  ???
+        - POST, PUT, DELETE /api/article/1 -> ??? 
+        - POST, DELETE /api/article/1/like -> ????
+    - 인증 없이도 접근
 
 ## References
 - https://github.com/svlada/springboot-security-jwt

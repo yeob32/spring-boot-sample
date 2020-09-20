@@ -6,8 +6,9 @@ import org.springframework.util.StringUtils;
 
 @Component
 public class JwtHeaderTokenExtractor implements TokenExtractor {
-    public static String HEADER_PREFIX = "Bearer ";
+    public static final String HEADER_PREFIX = "Bearer ";
 
+    // 필요할까..?
     @Override
     public String extract(String header) {
         if (StringUtils.isEmpty(header)) {
@@ -18,6 +19,6 @@ public class JwtHeaderTokenExtractor implements TokenExtractor {
             throw new AuthenticationServiceException("Invalid authorization header size.");
         }
 
-        return header.substring(HEADER_PREFIX.length(), header.length());
+        return header.substring(HEADER_PREFIX.length());
     }
 }

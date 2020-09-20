@@ -12,9 +12,7 @@ import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Collections;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -36,13 +34,16 @@ public class JwtTokenFactory {
         if (StringUtils.isEmpty(userContext.getUsername()))
             throw new IllegalArgumentException("Cannot create JWT Token without username");
 
-        if (userContext.getAuthorities() == null || userContext.getAuthorities().isEmpty())
-            throw new IllegalArgumentException("User doesn't have any privileges");
+//        if (userContext.getAuthorities() == null || userContext.getAuthorities().isEmpty())
+//            throw new IllegalArgumentException("User doesn't have any privileges");
 
         Claims claims = Jwts.claims().setSubject(userContext.getUsername());
         claims.put("scopes", userContext.getAuthorities().stream().map(Object::toString).collect(Collectors.toList()));
 
         LocalDateTime currentTime = LocalDateTime.now();
+
+        String encodedString = Base64.getEncoder()
+                .encodeToString(config.getTokenSigningKey().getBytes());
 
         String token = Jwts.builder()
                 .setClaims(claims)
@@ -51,7 +52,7 @@ public class JwtTokenFactory {
                 .setExpiration(Date.from(currentTime
                         .plusMinutes(config.getTokenExpirationTime())
                         .atZone(ZoneId.systemDefault()).toInstant()))
-                .signWith(SignatureAlgorithm.HS512, config.getTokenSigningKey())
+                .signWith(SignatureAlgorithm.HS512, encodedString)
                 .compact();
 
         return new AccessJwtToken(token, claims);

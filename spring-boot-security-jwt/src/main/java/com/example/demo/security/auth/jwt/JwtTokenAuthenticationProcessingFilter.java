@@ -1,7 +1,7 @@
 package com.example.demo.security.auth.jwt;
 
 import com.example.demo.security.auth.jwt.extractor.TokenExtractor;
-import com.example.demo.security.config.SecurityConfiguration;
+import com.example.demo.security.config.SecurityConfig;
 import com.example.demo.security.token.RawAccessJwtToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -33,7 +33,7 @@ public class JwtTokenAuthenticationProcessingFilter extends AbstractAuthenticati
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         // JWT 토큰 인증 -> 실패 시 AuthenticationException
         // 성공 시 provider -> successHandler
-        String tokenPayload = request.getHeader(SecurityConfiguration.AUTHENTICATION_HEADER_NAME);
+        String tokenPayload = request.getHeader(SecurityConfig.AUTHENTICATION_HEADER_NAME);
         RawAccessJwtToken token = new RawAccessJwtToken(tokenExtractor.extract(tokenPayload));
         return getAuthenticationManager().authenticate(new JwtAuthenticationToken(token));
     }

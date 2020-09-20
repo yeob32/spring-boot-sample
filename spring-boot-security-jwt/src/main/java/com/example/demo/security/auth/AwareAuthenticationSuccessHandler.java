@@ -1,9 +1,12 @@
 package com.example.demo.security.auth;
 
+import com.example.demo.domain.user.SessionService;
+import com.example.demo.global.util.CookieUtil;
 import com.example.demo.security.model.UserContext;
 import com.example.demo.security.token.JwtToken;
 import com.example.demo.security.token.JwtTokenFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -18,16 +21,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+@RequiredArgsConstructor
 @Component
 public class AwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     
     private final ObjectMapper mapper;
     private final JwtTokenFactory tokenFactory;
-
-    public AwareAuthenticationSuccessHandler(final ObjectMapper mapper, final JwtTokenFactory tokenFactory) {
-        this.mapper = mapper;
-        this.tokenFactory = tokenFactory;
-    }
+    private final SessionService sessionService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -35,15 +35,17 @@ public class AwareAuthenticationSuccessHandler implements AuthenticationSuccessH
         UserContext userContext = (UserContext) authentication.getPrincipal();
 
         JwtToken accessToken = tokenFactory.createAccessJwtToken(userContext);
-        JwtToken refreshToken = tokenFactory.createRefreshToken(userContext);
 
-        Map<String, String> tokenMap = new HashMap<>();
-        tokenMap.put("token", accessToken.getToken());
-        tokenMap.put("refreshToken", refreshToken.getToken());
+//        sessionService.putSession(accessToken.getToken(), );
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
 
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        mapper.writeValue(response.getWriter(), tokenMap);
+        response.addCookie(CookieUtil.createCookie("session", accessToken.getToken()));
+
+        mapper.writeValue(response.getWriter(), result);
 
         clearAuthenticationAttributes(request);
     }

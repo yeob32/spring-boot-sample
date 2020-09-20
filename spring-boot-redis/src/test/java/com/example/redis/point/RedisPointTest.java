@@ -12,13 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class RedisTest {
+public class RedisPointTest {
 
     @Autowired
     PointRedisRepository pointRedisRepository;
 
     @Test
-    public void create() {
+    void create() {
         // given
         String pointId = "yeob32";
         LocalDateTime refreshTime = LocalDateTime.of(2020, 8, 28, 13, 36, 0);
@@ -38,7 +38,7 @@ public class RedisTest {
     }
 
     @Test
-    public void update() {
+    void update() {
         // given
         String pointId = "yeob32";
         LocalDateTime refreshTime = LocalDateTime.of(2020, 8, 28, 12, 0, 0);

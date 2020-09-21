@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: local
+  redis:
+    port: 6379
+    host: localhost

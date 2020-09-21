@@ -1,5 +1,6 @@
 package com.example.redis.config;
 
+import com.example.redis.listener.RedisService;
 import io.lettuce.core.ClientOptions;
 import io.lettuce.core.resource.ClientResources;
 import io.lettuce.core.resource.DefaultClientResources;
@@ -11,8 +12,12 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
@@ -63,7 +68,7 @@ public class RedisRepositoryConfig {
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer()); // key, value 문자로 저장하려면....
         redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer()); // 객체를 json 형태로 깨지지 않고 받기 위한 직렬화 작업
-        // redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer<>(RedisToken.class)); // 표준화된 VO 사용시
+        // redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(RedisToken.class)); // 표준화된 VO 사용시
         return redisTemplate;
     }
 }

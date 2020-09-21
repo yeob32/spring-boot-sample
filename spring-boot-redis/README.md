@@ -13,7 +13,16 @@
 - Redis 에서 연결 제한을 사용하거나 연결 수가 적절한 연결 수를 초과하여 증가하는 경우 연결 수를 제한해야 할 수 있습니다.
 - https://github.com/spring-projects/spring-session/issues/789  
 
+## spring-data-redis
+- RedisMessageListenerContainer
+- MessageListenerAdapter
+- ChannelTopic
+
+## Pub / Sub
+- cli 접근 후 publish event some-message
+
 ## References
+- https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/#cluster
 - https://www.baeldung.com/spring-embedded-redis
 - https://jojoldu.tistory.com/297
 - http://arahansa.github.io/docs_spring/redis.html

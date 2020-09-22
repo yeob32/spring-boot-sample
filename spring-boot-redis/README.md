@@ -1,5 +1,22 @@
 # Spring Boot Redis
 
+## Redis
+### Data Structure
+- strings
+- hashes
+- lists
+- sets
+- sorted sets
+- geo, hyperloglog
+
+### commands
+- https://redis.io/commands
+
+### Docker Redis CLI
+```
+$ docker run -it --network redis-net --rm redis redis-cli -h some-redis
+```
+
 ## Jedis / Lettuce
 - jedis
     - Java 기반 응용프로그램 표준 드라이버
@@ -22,6 +39,7 @@
 - cli 접근 후 publish event some-message
 
 ## References
+- https://redis.io/
 - https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/#cluster
 - https://www.baeldung.com/spring-embedded-redis
 - https://jojoldu.tistory.com/297

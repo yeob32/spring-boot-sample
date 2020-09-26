@@ -1,0 +1,22 @@
+POST http://localhost:8080/request1
+Content-Type: application/x-www-form-urlencoded
+
+email=yeob32@gmail.com&password=1234
+
+###
+POST http://localhost:8080/request2
+Content-Type: application/json
+
+{
+  "email": "yeob32@gmail.com",
+  "password": 1234
+}
+
+###
+
+POST http://localhost:8080/request3
+Content-Type: application/x-www-form-urlencoded
+
+email=yeob32@gmail.com&password=1234
+
+###

@@ -7,3 +7,13 @@ GET http://localhost:8080/boo
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/hello
+Accept: application/json
+
+###
+
+GET http://localhost:8080/hello-test
+Accept: application/json
+
+###

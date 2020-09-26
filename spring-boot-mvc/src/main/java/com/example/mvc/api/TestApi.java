@@ -23,6 +23,11 @@ public class TestApi {
         return dto.toEntity();
     }
 
+    @GetMapping("/hello")
+    public void hello() {
+        log.info("hello !!!!!!!!");
+    }
+
     @AllArgsConstructor
     @Data
     public static class Foo {

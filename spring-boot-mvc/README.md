@@ -92,7 +92,7 @@ public class CustomFilter implements Filter {
 - application/json 으로 받은 요청을 MessageConverter 를 통해 Java 객체로 변환
 - dto setter 없어도 됨
 ### @ModelAttribute 또는 기본으로 받을 때
-- dto setter 있어야 됨
+- dto setter 있어야 됨 -> - 전달받은 파라미터들을 JavaObject 로 매핑
 - application/x-www-form-urlencoded
 ### @RequestParam
 - default required true

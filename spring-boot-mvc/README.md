@@ -86,6 +86,25 @@ public class CustomFilter implements Filter {
 
 ## Listener
 
+## Controller
+
+### DispatcherServlet
+- Front Controller Pattern
+![mvc](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/images/mvc.png)
+
+### Controller
+- View 를 반환하기 위해 사용
+- request -> DispatcherServlet(Type, Handler Mapping) -> View
+
+### RestController 
+- @ResponseBody 
+- Json 형태로 변환된 데이터 반환
+- request -> DispatcherServlet(Type, Handler Mapping) -> Data
+
+### MessageConverter
+- Http 요청 본문 변환 -> only POST
+- @RequestBody / @ResponseBody
+
 ## Request Binding
 - dto getter 필수
 ### @RequestBody
@@ -99,5 +118,6 @@ public class CustomFilter implements Filter {
 
 
 ## References
+- https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/web.html#mvc
 - https://www.ntu.edu.sg/home/ehchua/programming/java/javaservlets.html
 - https://www.baeldung.com/spring-boot-add-filter

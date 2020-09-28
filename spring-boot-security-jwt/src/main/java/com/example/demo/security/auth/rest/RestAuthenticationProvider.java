@@ -5,6 +5,7 @@ import com.example.demo.domain.user.UserService;
 import com.example.demo.security.model.UserContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -31,7 +32,7 @@ public class RestAuthenticationProvider implements AuthenticationProvider {
         User user = userService.getByEmail(email);
 
         if (!encoder.matches(password, user.getPassword())) {
-//            throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
+            throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         }
 
         UserContext userContext = UserContext.create(user.getEmail(), new ArrayList<>());

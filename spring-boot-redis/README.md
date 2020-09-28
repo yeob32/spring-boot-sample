@@ -26,9 +26,9 @@ $ docker run -it --network redis-net --rm redis redis-cli -h some-redis
 - Lettuce
     - 일반적으로 선호
     - netty 기반 연결 -> connection 인스턴스(StatefulRedisConnection)를 여러 쓰레드에서 공유가 가능하다. => Thread safe
-    - 따라서 다중 스레드 애플리케이션은 Lettuce와 상호 작용하는 동시 스레드 수에 관계없이 단일 연결을 사용할 수 있습니다 .
+    - 따라서 다중 스레드 애플리케이션은 Lettuce 와 상호 작용하는 동시 스레드 수에 관계없이 단일 연결을 사용할 수 있습니다 .
 - Redis 에서 연결 제한을 사용하거나 연결 수가 적절한 연결 수를 초과하여 증가하는 경우 연결 수를 제한해야 할 수 있습니다.
-- https://github.com/spring-projects/spring-session/issues/789  
+- https://github.com/spring-projects/spring-session/issues/789
 
 ## spring-data-redis
 - RedisMessageListenerContainer

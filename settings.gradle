@@ -11,4 +11,5 @@ include 'spring-boot-initialize',
         'spring-boot-swagger',
         'spring-boot-rest-docs',
         'spring-boot-async',
-        'spring-boot-redis'
+        'spring-boot-redis',
+        'spring-boot-mvc'

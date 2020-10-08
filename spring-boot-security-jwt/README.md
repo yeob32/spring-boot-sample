@@ -114,12 +114,30 @@ SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHRE
 ```
 
 ### 설계
-- 보안 정책
-    - 로그인 시에만 접근
-        - /api/member/*  ???
-        - POST, PUT, DELETE /api/article/1 -> ??? 
-        - POST, DELETE /api/article/1/like -> ????
-    - 인증 없이도 접근
+
+### 흐름
+- 클라이언트가 서버로 로그인 한다. (ID, PW)
+- 서버에서 사용자를 확인하고 Access Token 과 Refresh Token 을 함께 전송
+- 클라이언트는 쿠키 또는 메모리에 토큰을 저장하고, Access Token 을 사용하여 서버 로그인
+- 서버는 토큰을 검증하여 요청에 응답
+- Access Token 만료 시 Unauthorized 응답
+- 서버로 부터 Unauthorized 응답을 받으면 Refresh Token 으로 Access Token 을 재발급 한다.
+- Refresh Token 만료 시 클라이언트에게 다시 로그인 할 수 있도록 응답해야 한다. 
+    - 기존 Access Token 과 Refresh Token 을 비우고 다시 로그인 하게 해야 한다.
+    - 헤더에 토큰 실어서 요청 시 Refresh 토큰 만료 시간을 계속 갱신해야하나...? -> 게시글 작성 중 Refresh 토큰 만료 되면 우쨔? 
+- 로그아웃을 누르면 모든 토큰 제거
+
+### 보안 정책
+- 로그인 시에만 접근
+    - /api/member/*  ???
+    - POST, PUT, DELETE /api/article/1 -> ??? 
+    - POST, DELETE /api/article/1/like -> ????
+- 인증 없이도 접근
+- 토큰은 쿠키에 저장한다. (local storage 는 xss 공격에 취약)
+- 로그아웃
+    - 쿠키 삭제 또는 블랙리스트 관리
 
 ## References
 - https://github.com/svlada/springboot-security-jwt
+- https://godekdls.github.io/Spring%20Security/contents/
+- https://blog.ull.im/engineering/2019/02/07/jwt-strategy.html

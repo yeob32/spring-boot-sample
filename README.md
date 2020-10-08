@@ -27,6 +27,8 @@ FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':bootJar'.
+> org.gradle.api.GradleException: Failed to resolve imported Maven boms: Cannot resolve external dependency org.springframework.boot:spring-boot-dependencies:2.3.4.RELEASE because no repositories are defined.
+
 > Could not resolve all dependencies for configuration ':detachedConfiguration1'.
    > Cannot resolve external dependency org.springframework.boot:spring-boot-dependencies:2.3.3.RELEASE because no repositories are defined.
      Required by:
@@ -35,7 +37,7 @@ Execution failed for task ':bootJar'.
 ```
 
 ### 해결
-- gradle 빌드 시 각 프로젝트를 실행가능한 jar형태로 만드나 상위 모듈에는 Main메서드가 없어서 에러 발생
+- gradle 빌드 시 각 프로젝트를 실행가능한 jar 형태로 만드나 상위 모듈에는 Main 메서드가 없어서 에러 발생
 - 상위 모듈에서 bootJar task 비활성화
 ```
 bootJar {

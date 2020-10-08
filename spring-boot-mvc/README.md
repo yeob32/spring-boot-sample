@@ -45,6 +45,7 @@
 ## Filter
 - 서블릿 3.0 이전까지는 web.xml 을 통해 Servlet, Filter 등록 및 url 맵핑 설정 
 - 서블릿 3.0 부터는 Java 어노테이션으로 web.xml 설정 대체 가능
+- DispatcherServlet 안탐
 
 ### implements Filter
 ```

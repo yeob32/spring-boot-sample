@@ -1,18 +1,37 @@
 POST http://localhost:8080/api/login
 Content-Type: application/json
 
-{"email":"yeob32@gmail.com","password":"1234", "platform": "desktop"}
+{
+  "email": "yeob32@gmail.com",
+  "password": "1234",
+  "platform": "desktop"
+}
+
+> {%
+client.global.set("Authorization", response.headers.valueOf("Set-Cookie").split(";")[0].split("=")[1]);
+client.log("쿠키: "+client.global.get("Authorization"));
+%}
 
 ###
 
 GET http://localhost:8080/api/member
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5ZW9iMzJAZ21haWwuY29tIiwic2NvcGVzIjpbXSwiaXNzIjoieWVvYjMyIiwiaWF0IjoxNjAwNjE0MTY1LCJleHAiOjE2MDA2MTc3NjV9.tk0rYwinfzqny20u-KxeDOtQnhcrINN96vrij2oNhYyZghbeHKZe4v0v1ZBm2JEvxsrRg2xSfnI5P5lR1EHKJw
+Authorization: Bearer {{Authorization}}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
 
 ###
 
 GET http://localhost:8080/api/posts
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5ZW9iMzJAZ21haWwuY29tIiwic2NvcGVzIjpbXSwiaXNzIjoieWVvYjMyIiwiaWF0IjoxNjAwNjE0MTY1LCJleHAiOjE2MDA2MTc3NjV9.tk0rYwinfzqny20u-KxeDOtQnhcrINN96vrij2oNhYyZghbeHKZe4v0v1ZBm2JEvxsrRg2xSfnI5P5lR1EHKJw
+Authorization: Bearer {{Authorization}}
 
 ###
+
+GET http://localhost:8080/api/auth/token
+Content-Type: application/json
+Authorization: Bearer {{Authorization}}

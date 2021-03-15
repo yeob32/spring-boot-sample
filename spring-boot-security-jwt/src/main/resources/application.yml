@@ -1,7 +1,7 @@
 demo:
   security:
     jwt:
-      token-expiration-time: 60
+      token-expiration-time: 15
       token-issuer: yeob32
       token-signing-key: Yeob
-      refresh-token-exp-time: 60 * 24 * 7
+      refresh-token-exp-time: 60

@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:./ksy-auth
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate.format_sql: true
+      hibernate.use_sql_comments: true
+    open-in-view: false
+
+  main:
+    allow-bean-definition-overriding: true
+
+auth.security.jwt:
+  token-expiration-time: 10800
+  refresh-token-exp-time: 43200
+  token-issuer: https://something.com
+  token-signing-key: ksy-auth-app # encode some..
+  ingress-signing-key: a29waHktd2Vi

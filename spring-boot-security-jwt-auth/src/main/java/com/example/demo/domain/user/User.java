@@ -1,20 +1,24 @@
 package com.example.demo.domain.user;
 
+import com.example.demo.domain.model.BaseAuditEntity;
 import com.example.demo.domain.user.model.Email;
 import com.example.demo.domain.user.model.Password;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 @Table(name = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
-public class User {
+public class User extends BaseAuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "user_no")
     private Long id;
 
     private Email email;

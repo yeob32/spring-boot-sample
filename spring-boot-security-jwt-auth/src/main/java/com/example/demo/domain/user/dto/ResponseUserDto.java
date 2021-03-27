@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ResponseUserDto {
 
@@ -40,12 +42,20 @@ public class ResponseUserDto {
         private Long id;
         private String name;
         private String email;
+        private LocalDateTime createAt;
+        private LocalDateTime updateAt;
+        private User createBy;
+        private User updatedBy;
 
         @Builder
         public Users(User user) {
             this.id = user.getId();
             this.name = user.getName();
             this.email = user.getEmail().getValue();
+            this.createAt = user.getCreatedAt();
+            this.createBy = user.getCreatedBy();
+            this.updatedBy = user.getUpdatedBy();
+            this.updateAt = user.getUpdatedAt();
         }
     }
 

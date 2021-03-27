@@ -1,6 +1,5 @@
 package com.example.demo.domain.user;
 
-import com.example.demo.domain.user.UserService;
 import com.example.demo.domain.user.dto.ResponseUserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

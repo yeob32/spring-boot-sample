@@ -9,8 +9,10 @@ include 'spring-boot-initialize',
         'spring-boot-security',
         'spring-boot-security-jwt',
         'spring-boot-security-jwt-auth',
+        'spring-boot-security-oauth2',
         'spring-boot-swagger',
         'spring-boot-rest-docs',
         'spring-boot-async',
         'spring-boot-redis',
-        'spring-boot-mvc'
+        'spring-boot-mvc',
+        'spring-boot-mysql'

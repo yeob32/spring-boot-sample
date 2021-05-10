@@ -2,6 +2,10 @@ plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+
+    id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.4.32'
+//    id 'org.jetbrains.kotlin.plugin.kapt' version '1.4.10'
 }
 
 bootJar {
@@ -21,6 +25,11 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
+    apply plugin: 'org.jetbrains.kotlin.plugin.spring'
+//    apply plugin: 'org.jetbrains.kotlin.plugin.kapt'
+
     group = 'com.example'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '1.8'
@@ -29,10 +38,27 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
 
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
         implementation 'org.springframework.boot:spring-boot-starter'
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         }
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+
+    allOpen {
+        annotation("javax.persistence.Entity")
+        annotation("javax.persistence.Embeddable")
+        annotation("javax.persistence.MappedSuperclass")
     }
 
     repositories {
@@ -53,7 +79,7 @@ subprojects {
     task initSourceFolders {
         sourceSets*.java.srcDirs*.each {
             if (!it.exists()) {
-                it.mkdirs()
+//                it.mkdirs() // kotlin 혼용하면서 고민 중..
             }
         }
 
@@ -74,9 +100,10 @@ project(':spring-boot-scheduler')
 project(':spring-boot-security')
 project(':spring-boot-security-jwt')
 project(':spring-boot-security-jwt-auth')
+project(':spring-boot-security-oauth2')
 project(':spring-boot-swagger')
 project(':spring-boot-rest-docs')
 project(':spring-boot-async')
 project(':spring-boot-redis')
 project(':spring-boot-mvc')
-
+project(':spring-boot-mysql')

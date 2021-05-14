@@ -5,7 +5,8 @@ plugins {
 
     id 'org.jetbrains.kotlin.jvm' version '1.4.32'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.4.32'
-//    id 'org.jetbrains.kotlin.plugin.kapt' version '1.4.10'
+    id 'org.jetbrains.kotlin.kapt' version '1.4.10'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.4.10'
 }
 
 bootJar {
@@ -28,7 +29,7 @@ subprojects {
     apply plugin: 'org.jetbrains.kotlin.jvm'
     apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
     apply plugin: 'org.jetbrains.kotlin.plugin.spring'
-//    apply plugin: 'org.jetbrains.kotlin.plugin.kapt'
+    apply plugin: 'org.jetbrains.kotlin.kapt'
 
     group = 'com.example'
     version = '0.0.1-SNAPSHOT'
@@ -56,6 +57,12 @@ subprojects {
     }
 
     allOpen {
+        annotation("javax.persistence.Entity")
+        annotation("javax.persistence.Embeddable")
+        annotation("javax.persistence.MappedSuperclass")
+    }
+
+    noArg {
         annotation("javax.persistence.Entity")
         annotation("javax.persistence.Embeddable")
         annotation("javax.persistence.MappedSuperclass")

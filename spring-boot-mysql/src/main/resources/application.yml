@@ -3,13 +3,13 @@ spring:
     initialization-mode: never # always -> schema.sql 실행
     master:
       hikari:
-        jdbc-url: jdbc:mysql://localhost:13306/playground?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
+        jdbc-url: jdbc:mysql://localhost:3306/playground?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
         username: ksy-repl
         password: 1234
         driver-class-name: com.mysql.cj.jdbc.Driver
     slave:
       hikari:
-        jdbc-url: jdbc:mysql://localhost:23306/playground?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
+        jdbc-url: jdbc:mysql://localhost:3307/playground?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
         username: ksy
         password: 1234
         driver-class-name: com.mysql.cj.jdbc.Driver

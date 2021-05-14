@@ -12,6 +12,8 @@ class Person(
     @Column(name = "name")
     var name: String,
 ) {
+    constructor(): this(0, "")
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

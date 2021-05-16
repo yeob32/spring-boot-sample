@@ -14,6 +14,9 @@ class PersonController(
     @GetMapping("/slave")
     fun getSlave() = personService.getAllSlave()
 
+    @PostMapping
+    fun createPerson() = personService.createPerson()
+
     @PutMapping("/master")
     fun updateMaster() {
         personService.updateMaster()
@@ -22,5 +25,15 @@ class PersonController(
     @PutMapping("/slave")
     fun updateSlave() {
         personService.updateSlave()
+    }
+
+    @PutMapping("/slave/new1")
+    fun updateSlaveAndNewTx1() {
+        personService.updateSlaveNewTx1()
+    }
+
+    @PutMapping("/slave/new2")
+    fun updateSlaveAndNewTx2() {
+        personService.updateSlaveNewTx2()
     }
 }

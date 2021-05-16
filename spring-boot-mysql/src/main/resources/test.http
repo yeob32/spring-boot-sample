@@ -1,3 +1,8 @@
+POST http://localhost:8080/api/v1/person
+Content-Type: application/json
+
+###
+
 GET http://localhost:8080/api/v1/person/master
 Accept: application/json
 
@@ -11,13 +16,19 @@ Accept: application/json
 PUT http://localhost:8080/api/v1/person/master
 Content-Type: application/json
 
-{}
-
 ###
 
 PUT http://localhost:8080/api/v1/person/slave
 Content-Type: application/json
 
-{}
+###
+
+PUT http://localhost:8080/api/v1/person/slave/new1
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/api/v1/person/slave/new2
+Content-Type: application/json
 
 ###

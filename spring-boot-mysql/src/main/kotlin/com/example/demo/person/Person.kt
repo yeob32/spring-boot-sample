@@ -10,10 +10,8 @@ class Person(
     var id: Long = 0,
 
     @Column(name = "name")
-    var name: String,
+    var name: String? = null,
 ) {
-    constructor(): this(0, "")
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

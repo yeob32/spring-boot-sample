@@ -1,8 +1,8 @@
 package com.example.demo
 
-import com.example.demo.person.Person
-import com.example.demo.person.PersonRepository
-import com.example.demo.person.PersonService
+import com.example.demo.bar.person.Person
+import com.example.demo.bar.person.PersonRepository
+import com.example.demo.bar.person.PersonService
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

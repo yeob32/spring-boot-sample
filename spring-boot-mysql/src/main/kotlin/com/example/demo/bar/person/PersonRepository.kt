@@ -1,4 +1,4 @@
-package com.example.demo.person
+package com.example.demo.bar.person
 
 import org.springframework.data.jpa.repository.JpaRepository
 

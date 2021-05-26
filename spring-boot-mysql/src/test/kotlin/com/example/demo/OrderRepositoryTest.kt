@@ -1,12 +1,11 @@
 package com.example.demo
 
 import com.example.demo.config.DatabaseConfiguration
-import com.example.demo.order.Order
-import com.example.demo.order.OrderRepository
-import com.example.demo.person.Person
-import com.example.demo.person.PersonRepository
+import com.example.demo.bar.order.Order
+import com.example.demo.bar.order.OrderRepository
+import com.example.demo.bar.person.Person
+import com.example.demo.bar.person.PersonRepository
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase

@@ -1,4 +1,4 @@
-package com.example.demo.person
+package com.example.demo.bar.person
 
 import org.springframework.web.bind.annotation.*
 
@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v1/person")
 class PersonController(
     private val personService: PersonService,
+    private val personQueryRepository: PersonQueryRepository
 ) {
 
     @GetMapping("/master")
@@ -36,4 +37,7 @@ class PersonController(
     fun updateSlaveAndNewTx2() {
         personService.updateSlaveNewTx2()
     }
+
+    @GetMapping("/test")
+    fun test() = personQueryRepository.test()
 }

@@ -1,6 +1,6 @@
-package com.example.demo.order
+package com.example.demo.bar.order
 
-import com.example.demo.person.Person
+import com.example.demo.bar.person.Person
 import java.time.Instant
 import javax.persistence.*
 

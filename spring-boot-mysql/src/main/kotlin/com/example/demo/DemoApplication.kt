@@ -1,7 +1,7 @@
 package com.example.demo
 
-import com.example.demo.person.Person
-import com.example.demo.person.PersonRepository
+import com.example.demo.bar.person.Person
+import com.example.demo.bar.person.PersonRepository
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

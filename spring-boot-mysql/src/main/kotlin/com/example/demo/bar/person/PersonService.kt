@@ -1,4 +1,4 @@
-package com.example.demo.person
+package com.example.demo.bar.person
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Propagation
@@ -10,6 +10,10 @@ class PersonService(
     private val personRepository: PersonRepository,
     private val personUpdateService: PersonUpdateService
 ) {
+    @Transactional
+    fun create(person: Person) = runCatching { personRepository.save(person) }
+        .onFailure { throw RuntimeException("") }
+        .getOrThrow()
 
     @Transactional(readOnly = true)
     fun getAllSlave(): List<Person> = personRepository.findAll()

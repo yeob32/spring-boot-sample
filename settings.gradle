@@ -15,4 +15,5 @@ include 'spring-boot-initialize',
         'spring-boot-async',
         'spring-boot-redis',
         'spring-boot-mvc',
-        'spring-boot-mysql'
+        'spring-boot-mysql',
+        'spring-boot-logger'

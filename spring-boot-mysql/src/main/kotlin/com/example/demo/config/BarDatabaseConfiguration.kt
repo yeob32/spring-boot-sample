@@ -19,10 +19,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 const val BAR_MASTER_DATASOURCE = "masterDataSource"
 const val BAR_SLAVE_DATASOURCE = "slaveDataSource"
 
+const val BAR_TRANSACTION_MANAGER = "barTransactionManager"
+
 @EnableJpaRepositories(
     basePackages = ["com.example.demo.bar"],
     entityManagerFactoryRef = "barEntityManagerFactory",
-    transactionManagerRef = "barTransactionManager"
+    transactionManagerRef = BAR_TRANSACTION_MANAGER
 )
 @EnableTransactionManagement
 @Configuration
@@ -75,7 +77,7 @@ class DatabaseConfiguration(private val jpaProperties: JpaProperties) {
         afterPropertiesSet()
     }
 
-    @Bean(name = ["barTransactionManager"])
+    @Bean(name = [BAR_TRANSACTION_MANAGER])
     @Primary
     fun barTransactionManager(): PlatformTransactionManager {
         return JpaTransactionManager(barEntityManagerFactory().`object`!!)

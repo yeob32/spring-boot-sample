@@ -1,0 +1,7 @@
+[mysqld]
+server-id=2
+
+interactive_timeout=180
+wait_timeout=180
+max_connect_errors=9999
+skip-name-resolve

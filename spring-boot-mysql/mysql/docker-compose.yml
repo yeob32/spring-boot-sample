@@ -1,0 +1,36 @@
+version: "3"
+services:
+  mysql-master:
+    image: mysql:8.0.17
+    container_name: mysql-master
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - /Users/ksy/dockers/mysql/master/cnf:/etc/mysql/conf.d
+    networks:
+      - mysql
+  mysql-slave:
+    image: mysql:8.0.17
+    container_name: mysql-slave
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - /Users/ksy/dockers/mysql/slave/cnf:/etc/mysql/conf.d
+    networks:
+      - mysql
+networks:
+  mysql:
+    drivers: bridge
+

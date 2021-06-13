@@ -18,10 +18,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 const val FOO_MASTER_DATASOURCE = "fooMasterDataSource"
 const val FOO_SLAVE_DATASOURCE = "fooSlaveDataSource"
 
+const val FOO_TRANSACTION_MANAGER = "fooTransactionManager"
+
 @EnableJpaRepositories(
     basePackages = ["com.example.demo.foo"],
     entityManagerFactoryRef = "fooEntityManagerFactory",
-    transactionManagerRef = "fooTransactionManager"
+    transactionManagerRef = FOO_TRANSACTION_MANAGER
 )
 @EnableTransactionManagement
 @Configuration
@@ -72,7 +74,7 @@ class FooDatabaseConfiguration(private val jpaProperties: JpaProperties) {
         afterPropertiesSet()
     }
 
-    @Bean(name = ["fooTransactionManager"])
+    @Bean(name = [FOO_TRANSACTION_MANAGER])
     fun fooTransactionManager(): PlatformTransactionManager {
         return JpaTransactionManager(fooEntityManagerFactory().`object`!!)
     }

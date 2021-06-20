@@ -96,3 +96,4 @@ $ docker run -d -p 3000:3000 \
 ```
 
 - New dashboard > metric > jvm_memory_max_bytes, http_server_requests_seconds_count
+- PromQL

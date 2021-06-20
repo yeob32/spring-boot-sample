@@ -66,3 +66,33 @@ output {
 ```shell
 $ docker-compose -f ./docker-elk/docker-compose.yml up
 ```
+
+## Prometheus + Grafana
+### Prometheus 
+```shell
+$ docker run \ 
+  -p 9090:9090 \
+  --name prometheus \
+  -d prom/prometheus \
+  -v /Users/ksy/IdeaProjects/spring-boot-sample/spring-boot-monitor/prometheus.yml:/etc/prometheus/prometheus.yml \
+  --config.file=/etc/prometheus/prometheus.yml
+```
+- metric expression
+    - ex) jvm_memory_max_bytes, http_server_requests_seconds_count
+
+### Grafana
+```shell
+# host.docker.internal
+$ docker run -d -p 3000:3000 \
+  --name grafana \
+  grafana/grafana
+```
+### config
+
+#### Data Sources config 
+- Prometheus
+```shell
+- URL : host.docker.internal:9090
+```
+
+- New dashboard > metric > jvm_memory_max_bytes, http_server_requests_seconds_count

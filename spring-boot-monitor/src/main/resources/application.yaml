@@ -1,0 +1,19 @@
+#
+spring:
+  application:
+    name: spring-boot-app
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+  endpoint:
+    prometheus:
+      enabled: true # default true
+  metrics:
+    export:
+      prometheus:
+        enabled: true # default true
+metrics:
+  tags:
+    application: ${spring.application.name}

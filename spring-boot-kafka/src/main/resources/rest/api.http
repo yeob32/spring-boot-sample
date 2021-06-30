@@ -1,0 +1,7 @@
+### Send POST request with json body
+POST http://localhost:8080/api/kafka/v1
+Content-Type: application/json
+
+{
+  "value": 999
+}

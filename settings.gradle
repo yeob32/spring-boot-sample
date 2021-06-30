@@ -18,4 +18,5 @@ include 'spring-boot-initialize',
         'spring-boot-mysql',
         'spring-boot-logger',
         'spring-boot-monitor',
+        'spring-boot-kafka',
         'spring-webflux'

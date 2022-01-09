@@ -19,4 +19,5 @@ include 'spring-boot-initialize',
         'spring-boot-logger',
         'spring-boot-monitor',
         'spring-boot-kafka',
-        'spring-webflux'
+        'spring-webflux',
+        'spring-boot-circuitbreaker'

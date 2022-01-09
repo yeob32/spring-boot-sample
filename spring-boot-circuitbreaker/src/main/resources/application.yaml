@@ -1,0 +1,41 @@
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      circuitbreakers:
+        enabled: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 3 # close 이후 발생하는지 테스트
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      # CircuitBreaker, Retry, RateLimiter, Bulkhead, TimeLimiter 이벤트 발행 시 별도의 원형 이벤트 컨슈머 버퍼에 저장
+      # /actuator/circuitbreakers, /actuator/circuitbreakerevents
+      eventConsumerBufferSize: 10
+      registerHealthIndicator: true
+  instances:
+    foo:
+      baseConfig: default
+
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 3 # 몇번 재시도 할거냐
+      waitDuration: 5s # 재시도 전 지연시간 몇초로 줄거야 (재시도 간격)
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2 # 2초씩 재시도 간격 증가
+      registerHealthIndicator: true

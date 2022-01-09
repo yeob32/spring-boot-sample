@@ -1,14 +1,14 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.11.RELEASE'
+    id 'org.springframework.boot' version '2.6.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 
-    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.5.0'
-    id 'org.jetbrains.kotlin.kapt' version '1.5.0'
-    id 'org.jetbrains.kotlin.plugin.jpa' version '1.5.0'
-    id "org.jetbrains.kotlin.plugin.allopen" version "1.5.0"
-    id "org.jetbrains.kotlin.plugin.noarg" version "1.5.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.10'
+    id 'org.jetbrains.kotlin.kapt' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.10'
+    id "org.jetbrains.kotlin.plugin.allopen" version '1.6.10'
+    id "org.jetbrains.kotlin.plugin.noarg" version '1.6.10'
 }
 
 bootJar {
@@ -121,3 +121,4 @@ project(':spring-boot-logger')
 project(':spring-boot-monitor')
 project(':spring-boot-kafka')
 project(':spring-webflux')
+project(':spring-boot-circuitbreaker')

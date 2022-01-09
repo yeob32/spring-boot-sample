@@ -24,7 +24,7 @@ class FooClientConfiguration {
         return Logger.Level.FULL
     }
 
-    @Bean
+//    @Bean
     fun errorDecoder(): ErrorDecoder {
         return CustomErrorDecoder()
     }

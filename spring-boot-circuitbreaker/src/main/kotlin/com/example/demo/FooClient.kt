@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 interface FooClient {
 
     @CircuitBreaker(name = "foo-test")
-    @Retry(name = "foo-test")
+//    @Retry(name = "foo-test")
 //    @CircuitBreaker(name = "foo", fallbackMethod = "fallback")
     @GetMapping
     fun getAccounts(): Iterable<Any>

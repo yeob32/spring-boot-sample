@@ -1,20 +1,20 @@
 management:
-  server:
-    port: 8081
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
     health:
-#      show-details: always
-      circuitbreakers:
-        enabled: true
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
 
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
+client:
+  config:
+    default:
+      connectTimeout: 5000
+      readTimeout: 5000
 
 resilience4j.circuitbreaker:
   configs:

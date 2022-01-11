@@ -10,11 +10,12 @@ management:
     circuitbreakers:
       enabled: true
 
-client:
-  config:
-    default:
-      connectTimeout: 5000
-      readTimeout: 5000
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
 
 resilience4j.circuitbreaker:
   configs:

@@ -1,10 +1,10 @@
-package com.example.demo
+package com.example.demo.foo
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
-class FooClientWrapper(private val fooClient: FooClient) {
+@Service
+class FooClientService(private val fooClient: FooClient) {
     @CircuitBreaker(name = "foo", fallbackMethod = "fallback")
     fun getAccounts(): Iterable<Any> {
         return fooClient.getAccounts()

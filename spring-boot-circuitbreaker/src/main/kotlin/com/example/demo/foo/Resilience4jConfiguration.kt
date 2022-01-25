@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.foo
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig
 import io.github.resilience4j.common.circuitbreaker.configuration.CircuitBreakerConfigCustomizer

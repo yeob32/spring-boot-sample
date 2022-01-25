@@ -15,18 +15,29 @@ client:
     default:
       connectTimeout: 5000
       readTimeout: 5000
+  # spring cloud 2020.0.3 버전 이후 hystrix 를 쓰지 않고 구현체 (resilience4j) 선택 가능
+  # https://github.com/spring-cloud/spring-cloud-openfeign/issues/279 참고
+  circuitbreaker:
+    enabled: true
+    group:
+      enabled: true
 
 resilience4j.circuitbreaker:
   configs:
     default:
-      slidingWindowSize: 10
-      permittedNumberOfCallsInHalfOpenState: 3 # close 이후 발생하는지 테스트
-      waitDurationInOpenState: 5s
-      failureRateThreshold: 50
+      registerHealthIndicator: true
       # CircuitBreaker, Retry, RateLimiter, Bulkhead, TimeLimiter 이벤트 발행 시 별도의 원형 이벤트 컨슈머 버퍼에 저장
       # /actuator/circuitbreakers, /actuator/circuitbreakerevents
       eventConsumerBufferSize: 10
-      registerHealthIndicator: true
+      slidingWindowSize: 10
+      failureRateThreshold: 40
+      slowCallRateThreshold: 50
+      slowCallDurationThreshold: 1000
+      waitDurationInOpenState: 3000
+      # default false -> false 이면 요청이 있을 때만 open 에서 half-open 으로 변경됨.
+      # true 면 스레드하나 서킷브레이커 모니터링해서 open 일때 waitDurationInOpenState 에 설정된 시간 동안 대기 후 half-open
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      permittedNumberOfCallsInHalfOpenState: 3 # close 이후 발생하는지 테스트
   instances:
     foo:
       baseConfig: default

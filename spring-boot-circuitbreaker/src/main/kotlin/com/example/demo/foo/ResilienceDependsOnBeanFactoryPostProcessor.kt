@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.foo
 
 import io.github.resilience4j.circuitbreaker.autoconfigure.CircuitBreakerAutoConfiguration
 import org.springframework.beans.BeansException

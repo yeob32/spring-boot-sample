@@ -1,6 +1,8 @@
 extra["springCloudVersion"] = "2021.0.0"
 
 dependencies {
+	// 2020.0.3 버전 이후 부터 hystrix 대체 가능함
+
 	// 같은 클래스 내의 메서드만 폴백함수로 사용 할 수 있다.
 	// 폴백 -> 에러 던진다?, 대체 데이터 조회 (ex search-api -> home)
 

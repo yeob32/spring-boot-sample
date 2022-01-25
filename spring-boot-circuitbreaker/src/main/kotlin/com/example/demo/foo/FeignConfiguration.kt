@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.foo
 
 import feign.FeignException
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry

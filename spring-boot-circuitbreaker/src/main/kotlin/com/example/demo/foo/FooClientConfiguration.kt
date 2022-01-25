@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.foo
 
 import feign.Logger
 import feign.RequestInterceptor

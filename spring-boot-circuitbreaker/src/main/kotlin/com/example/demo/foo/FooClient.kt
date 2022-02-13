@@ -1,11 +1,10 @@
 package com.example.demo.foo
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
-import io.github.resilience4j.retry.annotation.Retry
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 
-@FeignClient(value = "accounts", url = "http://localhost:3000/v1/accounts")
+@FeignClient(value = "accounts", url = "\${api.url}/v1/accounts")
 interface FooClient {
 
     @CircuitBreaker(name = "foo-test")

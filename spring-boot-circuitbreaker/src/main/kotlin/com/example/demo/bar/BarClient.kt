@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping
 
 @FeignClient(
     value = "bar",
-    url = "http://localhost:8080/v1/sample",
+    url = "\${api.url}/v1/sample",
     fallbackFactory = BarFallbackFactory::class
 )
 interface BarClient {

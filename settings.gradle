@@ -20,4 +20,5 @@ include 'spring-boot-initialize',
         'spring-boot-monitor',
         'spring-boot-kafka',
         'spring-webflux',
-        'spring-boot-circuitbreaker'
+        'spring-boot-circuitbreaker',
+        'spring-boot-distributed-lock'

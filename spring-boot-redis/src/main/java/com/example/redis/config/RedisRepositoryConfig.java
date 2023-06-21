@@ -1,6 +1,7 @@
 package com.example.redis.config;
 
 import com.example.redis.listener.RedisService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.ClientOptions;
 import io.lettuce.core.resource.ClientResources;
 import io.lettuce.core.resource.DefaultClientResources;
@@ -71,4 +72,19 @@ public class RedisRepositoryConfig {
         // redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(RedisToken.class)); // 표준화된 VO 사용시
         return redisTemplate;
     }
+
+//    @Bean
+//    public RedisTemplate<String, Object> jsonRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+//        Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
+//        serializer.setObjectMapper(new ObjectMapper());
+//
+//        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+//        redisTemplate.setConnectionFactory(redisConnectionFactory);
+//        redisTemplate.setKeySerializer(new StringRedisSerializer());
+//        redisTemplate.setValueSerializer(serializer);
+//        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+//        redisTemplate.setHashValueSerializer(serializer);
+//
+//        return redisTemplate;
+//    }
 }

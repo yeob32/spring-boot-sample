@@ -64,6 +64,19 @@
 - `del`
     - Lock 해제
 - 개발자가 직접 Lock 관련 로직 구현해야함
+- 재시도가 필요가 없는 경우에 사용
+- 별도의 timeout 이 없고, 설정된 expire 값이 시간 동안 Lock 획득
+
+```shell
+127.0.0.1:6379> setnx LOCK_1 locked
+(integer) 1
+127.0.0.1:6379> setnx LOCK_1 locked
+(integer) 0
+127.0.0.1:6379> del LOCK_1
+(integer) 1
+127.0.0.1:6379> setnx LOCK_1 locked
+(integer) 1
+```
 
 ### Redisson
 
@@ -71,3 +84,4 @@
 - pub/sub 기능 사용으로 오버헤드 줄였음
     - Lock 해제 시 subscribe client 에게 락 해제 알림
 - 분산락 해제 시점과 트랜잭션 커밋 시점의 불일치
+- 재시도가 필요한 경우에 사용
